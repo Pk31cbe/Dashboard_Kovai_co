@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Dashboard</title>
+</head>
+<body>
+   
+    <!--Main Navigation-->
+<header>
+    <!-- Sidebar -->
+    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-blue">
+      <div class="position-sticky">
+        <div class="list-group list-group-flush mx-3 mt-4">
+          <a
+            href="#" class="list-group-item list-group-item-action py-2 ripple active"  aria-current="true" >
+            <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Dashboard</span>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action py-3 ripple ">
+            <i class="fas fa-envelope fa-fw me-3"></i><span>Message</span><span class="notification px-1 rounded ms-3">3</span>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action py-3 ripple ">
+            <i class="fas fa-user fa-fw me-3"></i><span>Account</span>
+          </a>
+          <a href="#" class="list-group-item list-group-item-action py-3 ripple"
+            ><i class="fas fa-chart-pie fa-fw me-3"></i><span>Chart</span></a
+          >
+          <a href="#" class="list-group-item list-group-item-action py-3 ripple"
+            ><i class="fas fa-calendar fa-fw me-3"></i><span>Calendar</span></a
+          >
+          <a href="#" class="list-group-item list-group-item-action py-3 ripple">
+            <i class="fas fa-file-alt fa-fw me-3"></i><span>Report</span>
+          </a>
+         
+        </div>
+      </div>
+    </nav>
+    <!-- Sidebar -->
+  
+    <!-- Navbar -->
+    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-blue fixed-top">
+      <!-- Container wrapper -->
+      <div class="container-fluid">
+        <!-- Toggle button -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-mdb-toggle="collapse"
+          data-mdb-target="#sidebarMenu"
+          aria-controls="sidebarMenu"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+  
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">
+          <img
+            src="images/round_menu_black_24dp.png"
+            height="25"
+            alt=""
+            loading="lazy"
+          />
+        </a>
+        <p class="pt-10 mb-0 logo">Your logo</p>
+        <!-- Search form -->
+        <form class="d-none d-md-flex input-group w-auto my-auto mx-3">
+            <input type="text" placeholder="Search..">
+            <span class="input-group-text border-0"><i class="fas fa-search"></i></span>
+          </form>
+  
+        <!-- Right links -->
+        <ul class="navbar-nav ms-auto d-flex flex-row">
+          <!-- Notification dropdown -->
+         
+  
+         
+  
+          <!-- Icon -->
+          <li class="text-white px-3">
+          <em> Hi Laure John</em>
+          </li>
+  
+          <!-- Avatar -->
+          <li class="nav-item dropdown">
+           
+              <img
+                src="https://mdbootstrap.com/img/Photos/Avatars/img (31).jpg"
+                class="rounded-circle"
+                height="22"
+                alt=""
+                loading="lazy"
+              />
+             
+          </li>
+        </ul>
+      </div>
+      <!-- Container wrapper -->
+    </nav>
+    <!-- Navbar -->
+  </header>
+  <!--Main Navigation-->
+  
+  <!--Main layout-->
+ <div class="container mainlayout m-5">
+     <h2>Overview</h2>
+     <div class="row">
+     <div class="col-md-7 col-sm-12">
+<div class="averagechart mt-4 gradient-bg">
+    <h5 class="pt-3 mb-3">Average Chart</h4>
+    <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+
+    <script>
+    var xValues = ["01", "02", "03", "04", "05","06","07", "08", "09", "10", "11", "12", "13", "14"];
+    var yValues = [55, 49, 44, 24, 15, 86, 34, 30, 57, 43, 91, 12, 21, 9];
+    var barColors = ["#1CDCA9", "#4A3DFF", "#1CDCA9", "#4A3DFF","#1CDCA9", "#4A3DFF","#1CDCA9", "#4A3DFF","#1CDCA9", "#4A3DFF","#1CDCA9", "#4A3DFF","#1CDCA9", "#4A3DFF"];
+    
+    new Chart("myChart", {
+      type: "bar",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues
+        }]
+      },
+      options: {
+        legend: {display: false},
+        title: {
+          display: true,
+          
+          align: "left"
+          
+        }
+      }
+    });
+    </script>
+</div>
+<div class="gradient-bg mt-4">
+    <img src="images/Map_kovai_co.jpg" alt="world map" class="img-fluid"> 
+</div>
+     </div>
+     <div class="col-md-5 col-sm-12">
+<div class="calculation gradient-bg mt-4 pb-4">
+<h5 class="pt-3 mb-3">Calculation</h4>
+<div class="row text-center">
+    <div class="col-md-4 col-sm-12">
+        <div class="Pricing">
+            <p>Earnings</p>
+            <img src="/images/dollar-currency-symbol.png" class="w-60" alt="dollar">
+            <h3 class="text-green">$ 3,124</h3>
+            <div class="small">Lorem ipsm wdsx</div> 
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-12 sm-mt-2  mob-bor">
+        <div class="Pricing">
+            <p>Earnings</p>
+            <img src="/images/down-arrow.png" class="w-60" alt="dollar">
+            <h3 class="text-green">$ 3,124</h3>
+            <div class="small">Lorem ipsm wdsx</div> 
+        </div>
+    </div>
+    <div class="col-md-4 col-sm-12 sm-mt-2  mob-bor">
+        <div class="Pricing">
+            <p>Earnings</p>
+            <img src="/images/star.png" class="w-60" alt="dollar">
+            <h3 class="text-green">$ 3,124</h3>
+            <div class="small">Lorem ipsm wdsx</div> 
+        </div>
+    </div>
+</div>
+</div>
+<div class="row mt-4">
+    <div class="col-md-8 col-sm-12">
+<div class="gradient-bg">
+    <h4 class="pt-3">Analitycal</h4>
+    <div id="myPlot" style="width:100%;max-width:100%;height:400px;"></div>
+
+<script>
+var xArray = [55, 49, 44, 24, 15, 86, 34, 30, 57, 43, 91, 12];
+var yArray = ["Italy ", "France ", "Spain ", "USA ", "Argentina ", "South Africa", "Dubai", "India", "UK", "United States", "Australia", "Canada"];
+
+var data = [{
+  x:xArray,
+  y:yArray,
+  type:"bar",
+//   height:"120px",
+  orientation:"h",
+  marker: {color:"#1CDCA9"},
+//   options: options
+}];
+
+var layout = {};
+
+Plotly.newPlot("myPlot", data, layout);
+</script>
+</div>
+    </div>
+    <div class="col-md-4 col-sm-12 sm-mt-2">
+        <div class="calculation gradient-bg pb-4">
+        <div id="chartContainer1" style="height: 200px; width: 100%;"></div>
+
+        <script>
+            window.onload = function () {
+                CanvasJS.addColorSet("greenShades",
+                    [//colorSet Array
+                        "#1CDCA9",
+                        "#4A3DFF"
+                    ]);
+    
+                var chart = new CanvasJS.Chart("chartContainer1", {
+                    colorSet: "greenShades",
+                    theme: "light1",
+                    exportFileName: "Doughnut Chart",
+                    exportEnabled: false,
+                    animationEnabled: true,
+                    title: {
+                        text: "Chart1"
+                    },
+                    legend: {
+                        cursor: "pointer",
+                        itemclick: explodePie
+                    },
+                    data: [{
+                        type: "doughnut",
+                        innerRadius: 50,
+                        showInLegend: false,
+                        toolTipContent: "<b>{name}</b>: ${y} (#percent%)",
+    
+                        dataPoints: [
+                            { y: 75, name: "Text1" },
+                            { y: 25, name: "Text2" },
+    
+                        ]
+                    }]
+                });
+                chart.render();
+    
+                function explodePie(e) {
+                    if (typeof (e.dataSeries.dataPoints[e.dataPointIndex].exploded) === "undefined" || !e.dataSeries.dataPoints[e.dataPointIndex].exploded) {
+                        e.dataSeries.dataPoints[e.dataPointIndex].exploded = true;
+                    } else {
+                        e.dataSeries.dataPoints[e.dataPointIndex].exploded = false;
+                    }
+                    e.chart.render();
+                }
+    
+            }
+        </script>
+         
+    </div>
+</div>
+</div>
+
+<div class="gradient-bg mt-4">
+<div class="row d-flex align-items-center pt-2">
+    <div class="col-md-12 col-lg-12 col-xl-3 col-sm-12">
+        <h5 class="text-blue">01/03/2021</h5>
+    </div>
+    <div class="col-md-12 col-lg-12 col-xl-9 col-sm-12">
+        <p class="small  text-left mb-0">The standard Lorem Ipsum passage, used since the 1500s "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
+    </div>
+</div>
+</div>
+    </div>
+</div>
+ </div>
+  <!--Main layout-->
+</body>
+</html>
